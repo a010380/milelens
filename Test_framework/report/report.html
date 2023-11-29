@@ -2,14 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>华为鉴黄</title>
+    <title>栾鹏全栈</title>
     <meta name="generator" content="HTMLTestRunner 0.8.2"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     
 <style type="text/css" media="screen">
 body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
 table       { font-size: 100%; }
-/* pre         { } */
+pre         { }
 
 /* -- heading ---------------------------------------------------------------------- */
 h1 {
@@ -32,8 +32,8 @@ h1 {
 }
 
 /* -- css div popup ------------------------------------------------------------------------ */
-/* a.popup_link {
-} */
+a.popup_link {
+}
 
 a.popup_link:hover {
     color: red;
@@ -53,7 +53,7 @@ a.popup_link:hover {
     width: 500px;
 }
 
-
+}
 /* -- report ------------------------------------------------------------------------ */
 #show_detail_line {
     margin-top: 3ex;
@@ -85,15 +85,15 @@ a.popup_link:hover {
 
 
 /* -- ending ---------------------------------------------------------------------- */
-/* #ending {
-} */
+#ending {
+}
 
 </style>
 
 </head>
 <body>
-<script language="javascript" type="text/javascript">!--
-output_list == Array();
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
 
 /* level - 0:Summary; 1:Failed; 2:All */
 function showCase(level) {
@@ -185,15 +185,15 @@ function showOutput(id, name) {
     d.close();
 }
 */
---</script>
+--></script>
 
 <div class='heading'>
-<h1>华为鉴黄</h1>
-<p class='attribute'><strong>Start Time:</strong> 2018-08-20 20:32:41</p>
-<p class='attribute'><strong>Duration:</strong> 0:00:07.768244</p>
-<p class='attribute'><strong>Status:</strong> Pass 1</p>
+<h1>栾鹏全栈</h1>
+<p class='attribute'><strong>Start Time:</strong> 2022-12-27 10:34:50</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:00.002005</p>
+<p class='attribute'><strong>Status:</strong> Error 1</p>
 
-<p class='description'>压力测试html报告</p>
+<p class='description'>修改html报告</p>
 </div>
 
 
@@ -221,31 +221,47 @@ function showOutput(id, name) {
     <td>View</td>
 </tr>
 
-<tr class='passClass'>
-    <td>Test_Load</td>
-    <td>1</td>
+<tr class='errorClass'>
+    <td>TestBaiDu</td>
     <td>1</td>
     <td>0</td>
     <td>0</td>
+    <td>1</td>
     <td><a href="javascript:showClassDetail('c1',1)">Detail</a></td>
 </tr>
 
-<tr id='pt1.1' class='hiddenRow'>
-    <td class='none'><div class='testcase'>test_safety</div></td>
+<tr id='ft1.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_search</div></td>
     <td colspan='5' align='center'>
 
     <!--css div popup start-->
-    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
-        pass</a>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        error</a>
 
-    <div id='div_pt1.1' class="popup_window">
+    <div id='div_ft1.1' class="popup_window">
         <div style='text-align: right; color:red;cursor:pointer'>
-        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
            [x]</a>
         </div>
         <pre>
         
-pt1.1: 
+ft1.1: Traceback (most recent call last):
+  File "/Users/xiaozhongwai/Desktop/Test-master/Test_framework/test_baidu.py", line 25, in test_search
+    datas = ExcelReader(self.excel).data
+  File "/Users/xiaozhongwai/Desktop/Test-master/Test_framework/utils/file_reader.py", line 59, in data
+    workbook = open_workbook(self.excelpath)
+  File "/Users/xiaozhongwai/Desktop/Test-master/venv/lib/python3.10/site-packages/xlrd/__init__.py", line 170, in open_workbook
+    raise XLRDError(FILE_FORMAT_DESCRIPTIONS[file_format]+'; not supported')
+xlrd.biffh.XLRDError: Excel xlsx file; not supported
+Traceback (most recent call last):
+  File "/Users/xiaozhongwai/Desktop/Test-master/Test_framework/test_baidu.py", line 25, in test_search
+    datas = ExcelReader(self.excel).data
+  File "/Users/xiaozhongwai/Desktop/Test-master/Test_framework/utils/file_reader.py", line 59, in data
+    workbook = open_workbook(self.excelpath)
+  File "/Users/xiaozhongwai/Desktop/Test-master/venv/lib/python3.10/site-packages/xlrd/__init__.py", line 170, in open_workbook
+    raise XLRDError(FILE_FORMAT_DESCRIPTIONS[file_format]+'; not supported')
+xlrd.biffh.XLRDError: Excel xlsx file; not supported
+
 
         </pre>
     </div>
@@ -257,9 +273,9 @@ pt1.1:
 <tr id='total_row'>
     <td>Total</td>
     <td>1</td>
+    <td>0</td>
+    <td>0</td>
     <td>1</td>
-    <td>0</td>
-    <td>0</td>
     <td>&nbsp;</td>
 </tr>
 </table>
