@@ -1,6 +1,6 @@
 """
-添加用于测试后台接口的前端client，对于HTTP接口添加HTTPClient，发送http请求。
-还可以封装TCPClient，用来进行tcp链接，测试socket接口等等。
+添加用於測試後台接口的前端client，對於HTTP接口添加HTTPClient，發送http請求。
+還可以封裝TCPClient，用來進行tcp鏈接，測試socket接口等等。
 """
 
 import requests
@@ -11,14 +11,14 @@ import time
 import asyncio
 from utils.log import logger
 
-METHODS = ['GET', 'POST', 'HEAD', 'TRACE', 'PUT', 'DELETE', 'OPTIONS', 'CONNECT']  # 所有支持的前后前交互方法
+METHODS = ['GET', 'POST', 'HEAD', 'TRACE', 'PUT', 'DELETE', 'OPTIONS', 'CONNECT']  # 所有支持的前後前交互方法
 
 
 class UnSupportMethodException(Exception):
-    """当传入的method的参数不是支持的类型时抛出此异常。"""
+    """當傳入的method的參數不是支持的類型時拋出此異常。"""
     pass
 
-# http请求的client。初始化时传入url、method等，可以添加headers和cookies，但没有auth、proxy。
+# http請求的client。初始化時傳入url、method等，可以添加headers和cookies，但沒有auth、proxy。
 class HTTPClient(object):
 
     def __init__(self, url, method='GET', headers=None, cookies=None):
@@ -27,7 +27,7 @@ class HTTPClient(object):
         self.session = requests.session()
         self.method = method.upper()
         if self.method not in METHODS:
-            raise UnSupportMethodException('不支持的method:{0}，请检查传入参数！'.format(self.method))
+            raise UnSupportMethodException('不支持的method:{0}，請檢查傳入參數！'.format(self.method))
 
         self.set_headers(headers)
         self.set_cookies(cookies)
@@ -44,22 +44,22 @@ class HTTPClient(object):
         response = self.session.request(method=self.method, url=self.url, params=params, data=data, **kwargs)
         response.encoding = 'utf-8'
         logger.debug('{0} {1}'.format(self.method, self.url))
-        logger.debug('请求成功: {0}\n{1}'.format(response, response.text))
+        logger.debug('請求成功: {0}\n{1}'.format(response, response.text))
         return response
 
-# 用于测试TCP协议的socket请求，对于WebSocket，socket.io需要另外的封装
+# 用於測試TCP協議的socket請求，對於WebSocket，socket.io需要另外的封裝
 class TCPClient(object):
 
     def __init__(self, domain, port, timeout=30, max_receive=102400):
         self.domain = domain
         self.port = port
-        self.connected = 0  # 连接后置为1
+        self.connected = 0  # 連接後置為1
         self.max_receive = max_receive
         self._sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self._sock.settimeout(timeout)
 
     def connect(self):
-        """连接指定IP、端口"""
+        """連接指定IP、端口"""
         if not self.connected:
             try:
                 self._sock.connect((self.domain, self.port))
@@ -70,7 +70,7 @@ class TCPClient(object):
                 logger.debug('TCPClient connect to {0}:{1} success.'.format(self.domain, self.port))
 
     def send(self, data, dtype='str', suffix=''):
-        """向服务器端发送send_string，并返回信息，若报错，则返回None"""
+        """向服務器端發送send_string，並返回信息，若報錯，則返回None"""
         if dtype == 'json':
             send_string = json.dumps(data) + suffix
         else:
@@ -93,32 +93,31 @@ class TCPClient(object):
                 logger.exception(e)
 
     def close(self):
-        """关闭连接"""
+        """關閉連接"""
         if self.connected:
             self._sock.close()
             logger.debug('TCPClient closed.')
 
 
-# 异步并发客户端
+# 異步並發客戶端
 class Asyncio_Client(object):
 
     def __init__(self):
         self.loop=asyncio.get_event_loop()
         self.tasks=[]
 
-    # 将异步函数介入任务列表。后续参数直接传给异步函数
+    # 將異步函數介入任務列表。後續參數直接傳給異步函數
     def set_task(self,task_fun,num,*args):
         for i in range(num):
             self.tasks.append(task_fun(*args))
 
-    # 运行，获取返回结果
+    # 運行，獲取返回結果
     def run(self):
         back=[]
         try:
-            f = asyncio.wait(self.tasks)   # 创建future
+            f = asyncio.wait(self.tasks)   # 創建future
             self.loop.run_until_complete(f)  # 等待future完成
         finally:
             pass
             # self.loop.run_forever()
-            # self.loop.close()  # 当轮训器关闭以后，所有没有执行完成的协成将全部关闭
-
+            # self.loop.close()  # 當輪訓器關閉以後，所有沒有執行完成的協成將全部關閉

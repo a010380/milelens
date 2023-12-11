@@ -1,7 +1,7 @@
-# pycharm中如果无法引入自定义模块，要先在pycharm中右键点击项目根目录->标记目录为Resource Root，然后再右键点击项目根目录->根源。这样就能引用项目根目录下的所有自定义模块了。
+# pycharm中如果無法引入自定義模塊，要先在pycharm中右鍵點擊項目根目錄->標記目錄為Resource Root，然後再右鍵點擊項目根目錄->根源。這樣就能引用項目根目錄下的所有自定義模塊了。
 import sys
 import os
 dir_common = os.path.split(os.path.realpath(__file__))[0]
-sys.path.append(dir_common)   # 将根目录添加到系统目录,才能正常引用其他文件的内容
-print('系统根目录',dir_common)
+sys.path.append(dir_common)   # 將根目錄添加到系統目錄,才能正常引用其他文件的內容
+print('系統根目錄',dir_common)
 

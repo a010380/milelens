@@ -1,14 +1,14 @@
 # kubectl create -f test_safety.yaml
 ---
 apiVersion: v1
-kind: Service            # 类型包含Pod, Deployment、Job、Ingress、Service
-metadata:                # 包含应用的一些meta信息，比如名称、namespace、标签等信息。
-  name: test-service    # 名称还能为小写和-
+kind: Service            # 類型包含Pod, Deployment、Job、Ingress、Service
+metadata:                # 包含應用的一些meta信息，比如名稱、namespace、標簽等信息。
+  name: test-service    # 名稱還能為小寫和-
   namespace: test
   labels:
     app: test-service
 spec:           
-  type: NodePort        # NodePort类型每个 node 上都会监听同一个端口，会自动找到pod所在的节点，LoadBalancer会为这个服务提供一个对外ip，ip代理下面的pod。pod可能在不同的机器上
+  type: NodePort        # NodePort類型每個 node 上都會監聽同一個端口，會自動找到pod所在的節點，LoadBalancer會為這個服務提供一個對外ip，ip代理下面的pod。pod可能在不同的機器上
   ports:
   - port: 8888
     targetPort: 8888   # container端口
@@ -23,12 +23,12 @@ kind: Deployment
 metadata:
   name: test-deployment
   namespace: test
-spec:   # 包括一些container，storage，volume以及其他Kubernetes需要的参数，以及诸如是否在容器失败时重新启动容器的属性。可在特定Kubernetes API找到完整的Kubernetes Pod的属性。
+spec:   # 包括一些container，storage，volume以及其他Kubernetes需要的參數，以及諸如是否在容器失敗時重新啟動容器的屬性。可在特定Kubernetes API找到完整的Kubernetes Pod的屬性。
   selector:
     matchLabels:
       app: test-pod
-  replicas: 1   # 选项定义需要的副本个数，此处可以设置很多属性，例如受此Deployment影响的Pod的选择器等
-  template:   # template其实就是对Pod对象的定义
+  replicas: 1   # 選項定義需要的副本個數，此處可以設置很多屬性，例如受此Deployment影響的Pod的選擇器等
+  template:   # template其實就是對Pod對象的定義
     metadata:
       labels:
         app: test-pod
@@ -37,8 +37,8 @@ spec:   # 包括一些container，storage，volume以及其他Kubernetes需要�
       imagePullSecrets:
       - name: hubsecret
       containers:
-      - name: test-container     # 容器名称
-        image: mldp/cloud:safety-1.0.7    # 基于的镜像名, 根据镜像创建容器
+      - name: test-container     # 容器名稱
+        image: mldp/cloud:safety-1.0.7    # 基於的鏡像名, 根據鏡像創建容器
         command: ['sleep','3000']
-        ports:     # 容器将会监听的指定端口号
+        ports:     # 容器將會監聽的指定端口號
         - containerPort: 8888

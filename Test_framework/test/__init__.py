@@ -1,1 +1,1 @@
-# test层，放所有测试相关的文件，如case——测试用例、common——项目相关的抽象通用代码、page——页面类（Page-Object思想）、suite——组织的测试套件。
+# test層，放所有測試相關的文件，如case——測試用例、common——項目相關的抽象通用代碼、page——頁面類（Page-Object思想）、suite——組織的測試套件。

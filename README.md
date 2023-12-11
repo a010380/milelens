@@ -1,5 +1,5 @@
 # Test
-自动化测试架构，python、Selenium、unittest
+自動化測試架構，python、Selenium、unittest
 
 
-帮助文档参考：https://blog.csdn.net/luanpeng825485697/article/details/79457867
+幫助文檔參考：https://blog.csdn.net/luanpeng825485697/article/details/79457867

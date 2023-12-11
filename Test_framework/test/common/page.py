@@ -6,7 +6,7 @@ from utils.log import logger
 import os
 from utils.config import DRIVER_PATH, REPORT_PATH
 
-# 浏览器页面类，主要进行浏览器页面的控制，包括获取
+# 瀏覽器頁面類，主要進行瀏覽器頁面的控制，包括獲取
 class Page(Browser):
     def __init__(self, page=None, browser_type='firefox'):
         if page:
@@ -14,58 +14,58 @@ class Page(Browser):
         else:
             super(Page, self).__init__(browser_type=browser_type)
 
-    # 获取当前窗口句柄
+    # 獲取當前窗口句柄
     @property
     def current_window(self):
         return self.driver.current_window_handle
 
-    #获取标题
+    #獲取標題
     @property
     def title(self):
         return self.driver.title
 
-    # 获取当前网址
+    # 獲取當前網址
     @property
     def current_url(self):
         return self.driver.current_url
 
-    # 获取浏览器驱动
+    # 獲取瀏覽器驅動
     def get_driver(self):
         return self.driver
 
-    # 睡眠一段时间
+    # 睡眠一段時間
     def wait(self, seconds=4):
         time.sleep(seconds)
 
-    # 睡眠一段时间
+    # 睡眠一段時間
     def free_wait(self, seconds):
         time.sleep(seconds)
 
-    # 睡眠一段时间
+    # 睡眠一段時間
     def implicitly_wait(self, seconds=5):
         self.driver.implicitly_wait(seconds)
 
-    # 执行js脚本
+    # 執行js腳本
     def execute(self, js, *args):
         self.driver.execute_script(js, *args)
 
-    # 移动到指定元素
+    # 移動到指定元素
     def move_to(self, element):
         ActionChains(self.driver).move_to_element(element).perform()
 
-    # 寻找指定元素
+    # 尋找指定元素
     def find_element(self, *args):
         return self.driver.find_element(*args)
 
-    # 寻找指定的一批元素
+    # 尋找指定的一批元素
     def find_elements(self, *args):
         return self.driver.find_elements(*args)
 
-    # 切换窗口
+    # 切換窗口
     def switch_to_window(self, partial_url='', partial_title=''):
-        """切换窗口
-            如果窗口数<3,不需要传入参数，切换到当前窗口外的窗口；
-            如果窗口数>=3，则需要传入参数来确定要跳转到哪个窗口
+        """切換窗口
+            如果窗口數<3,不需要傳入參數，切換到當前窗口外的窗口；
+            如果窗口數>=3，則需要傳入參數來確定要跳轉到哪個窗口
         """
         all_windows = self.driver.window_handles
         if len(all_windows) == 1:
@@ -81,7 +81,7 @@ class Page(Browser):
                     break
         # logger.debug(self.driver.current_url, self.driver.title)
     
-    # 切换窗口
+    # 切換窗口
     def switchto_window(self):
         self.driver.switch_to.window(self.driver.window_handles[0])
     
@@ -89,11 +89,11 @@ class Page(Browser):
     def switch_to_default_content(self):
         self.driver.switch_to.default_content()
 
-    # 切换frame页面
+    # 切換frame頁面
     def switch_to_frame(self, param):
         self.driver.switch_to.frame(param)
 
-    # 切换alter
+    # 切換alter
     def switch_to_alert(self):
         return self.driver.switch_to.alert
 

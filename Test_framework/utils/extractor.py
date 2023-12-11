@@ -1,13 +1,13 @@
-# 抽取器，从响应结果中抽取部分数据，这里实现的是json返回数据的抽取，可以自己添加XML格式、普通字符串格式、Header的抽取器
+# 抽取器，從響應結果中抽取部分數據，這里實現的是json返回數據的抽取，可以自己添加XML格式、普通字符串格式、Header的抽取器
 
 import json
 import jmespath
 from utils.client import HTTPClient
 
-# 完成了对JSON格式的抽取器，如果返回结果是JSON串，我们可以通过这个抽取器找到我们想要的数据，再进行下一步的操作，或者用来做断言。
+# 完成了對JSON格式的抽取器，如果返回結果是JSON串，我們可以通過這個抽取器找到我們想要的數據，再進行下一步的操作，或者用來做斷言。
 class JMESPathExtractor(object):
     """
-    用JMESPath实现的抽取器，对于json格式数据实现简单方式的抽取。
+    用JMESPath實現的抽取器，對於json格式數據實現簡單方式的抽取。
     """
     def extract(self, query=None, body=None):
         try:
@@ -21,23 +21,23 @@ if __name__ == '__main__':
     res = HTTPClient(url='http://wthrcdn.etouch.cn/weather_mini?citykey=101010100').send()
     print(res.text)
     # {"data": {
-    #     "yesterday": {"date": "17日星期四", "high": "高温 31℃", "fx": "东南风", "low": "低温 22℃", "fl": "<![CDATA[<3级]]>",
-    #                   "type": "多云"},
+    #     "yesterday": {"date": "17日星期四", "high": "高溫 31℃", "fx": "東南風", "low": "低溫 22℃", "fl": "<![CDATA[<3級]]>",
+    #                   "type": "多雲"},
     #     "city": "北京",
     #     "aqi": "91",
     #     "forecast": [
-    #         {"date": "18日星期五", "high": "高温 28℃", "fengli": "<![CDATA[<3级]]>", "low": "低温 22℃", "fengxiang": "东北风",
-    #          "type": "多云"},
-    #         {"date": "19日星期六", "high": "高温 29℃", "fengli": "<![CDATA[<3级]]>", "low": "低温 22℃", "fengxiang": "东风",
-    #          "type": "雷阵雨"},
-    #         {"date": "20日星期天", "high": "高温 29℃", "fengli": "<![CDATA[<3级]]>", "low": "低温 23℃", "fengxiang": "东南风",
-    #          "type": "阴"},
-    #         {"date": "21日星期一", "high": "高温 30℃", "fengli": "<![CDATA[<3级]]>", "low": "低温 24℃", "fengxiang": "西南风",
+    #         {"date": "18日星期五", "high": "高溫 28℃", "fengli": "<![CDATA[<3級]]>", "low": "低溫 22℃", "fengxiang": "東北風",
+    #          "type": "多雲"},
+    #         {"date": "19日星期六", "high": "高溫 29℃", "fengli": "<![CDATA[<3級]]>", "low": "低溫 22℃", "fengxiang": "東風",
+    #          "type": "雷陣雨"},
+    #         {"date": "20日星期天", "high": "高溫 29℃", "fengli": "<![CDATA[<3級]]>", "low": "低溫 23℃", "fengxiang": "東南風",
+    #          "type": "陰"},
+    #         {"date": "21日星期一", "high": "高溫 30℃", "fengli": "<![CDATA[<3級]]>", "low": "低溫 24℃", "fengxiang": "西南風",
     #          "type": "晴"},
-    #         {"date": "22日星期二", "high": "高温 29℃", "fengli": "<![CDATA[<3级]]>", "low": "低温 24℃", "fengxiang": "北风",
-    #          "type": "雷阵雨"}
+    #         {"date": "22日星期二", "high": "高溫 29℃", "fengli": "<![CDATA[<3級]]>", "low": "低溫 24℃", "fengxiang": "北風",
+    #          "type": "雷陣雨"}
     #     ],
-    #     "ganmao": "各项气象条件适宜，无明显降温过程，发生感冒机率较低。", "wendu": "25"
+    #     "ganmao": "各項氣象條件適宜，無明顯降溫過程，發生感冒機率較低。", "wendu": "25"
     #  },
     # "status": 1000,
     # "desc": "OK"}

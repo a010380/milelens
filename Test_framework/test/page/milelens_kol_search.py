@@ -1,4 +1,4 @@
-import re
+import re, logging
 from selenium.webdriver.common.by import By
 from .milelens_login_page import MilelensLoginPage
 from Test_framework.utils.config import Config, DRIVER_PATH, DATA_PATH, REPORT_PATH  # 引入配置
@@ -59,7 +59,7 @@ class MilelensKolSearch(MilelensLoginPage):
     first_kol_total_fans = (By.XPATH, '//*[@id="__next"]/div[1]/div/div/div/div/div[3]/div[2]/div/div[2]/div[2]/div/div[2]/div/div[2]/h6')  #第一個kol的總粉絲數
     # 貼文關鍵字
     post_keyword = (By.XPATH, '//*[@id="__next"]/div[1]/div/div/div/div/div[2]/div[1]/button[3]')  #貼文關鍵字的tab
-    post_keyword_input = (By.XPATH, '//*[@id="__next"]/div[1]/div/div/div/div/div[2]/div[2]/div/div[1]/div/div[1]/div[1]/div/div[2]/input')  #貼文關鍵字輸入欄位
+    post_keyword_input = (By.XPATH, '//*[@id="__next"]/div[1]/div/div/div/div/div[2]/div[2]/div/div[1]/div/div[1]/div[1]/div/div[2]/div/input')  #貼文關鍵字輸入欄位
     post_keyword_button = (By.XPATH, '//*[@id="__next"]/div[1]/div/div/div/div/div[2]/div[2]/div/div[1]/div/div[3]/button')  #貼文關鍵字搜尋
     # 網紅熱門排行
     kol_hot_rank = (By.XPATH, '//*[@id="__next"]/div[1]/div/div/div/div/div[2]/div[1]/button[4]')  #網紅熱門排行的tab           (By.XPATH, '')  #

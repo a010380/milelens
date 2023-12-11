@@ -22,5 +22,5 @@ class TestBaiDuHTTP(unittest.TestCase):
 if __name__ == '__main__':
     report = REPORT_PATH + '\\report.html'
     with open(report, 'wb') as f:
-        runner = HTMLTestRunner(f, verbosity=2, title='栾鹏全栈', description='接口html报告')
+        runner = HTMLTestRunner(f, verbosity=2, title='欒鵬全棧', description='接口html報告')
         runner.run(TestBaiDuHTTP('test_baidu_http'))

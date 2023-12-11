@@ -7,9 +7,9 @@ from wqrfnium.wqrfnium import *
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver import Chrome
 
-# 根据传入的参数选择浏览器的driver去打开对应的浏览器
+# 根據傳入的參數選擇瀏覽器的driver去打開對應的瀏覽器
 
-# 可根据需要自行扩展
+# 可根據需要自行擴展
 CHROMEDRIVER_PATH = DRIVER_PATH + '/chromedriver'
 IEDRIVER_PATH = DRIVER_PATH + '/IEDriverServer.exe'
 # PHANTOMJSDRIVER_PATH = DRIVER_PATH + '\phantomjs.exe'
@@ -28,7 +28,7 @@ class Browser(object):
         if self._type in TYPES:
             self.browser = TYPES[self._type]
         else:
-            raise UnSupportBrowserTypeError('仅支持%s!' % ', '.join(TYPES.keys()))
+            raise UnSupportBrowserTypeError('僅支持%s!' % ', '.join(TYPES.keys()))
         self.driver = None
 
     def get(self, url, maximize_window=True, implicitly_wait=30):
@@ -64,7 +64,7 @@ class Browser(object):
     def quit(self):
         self.driver.quit()
 
-# 这里试验了一下保存截图的方法，保存png截图到report目录下。
+# 這里試驗了一下保存截圖的方法，保存png截圖到report目錄下。
 if __name__ == '__main__':
     begin_wqrf(r'MyElements.xls')
     b = Browser('chrome').get('https://milelens.com/')

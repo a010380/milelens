@@ -1,4 +1,4 @@
-"""一些生成器方法，生成随机数，手机号，以及连续数字等，以便使用这些数据进行测试"""
+"""一些生成器方法，生成隨機數，手機號，以及連續數字等，以便使用這些數據進行測試"""
 
 import random
 from faker import Factory
@@ -7,37 +7,37 @@ fake = Factory().create('zh_CN')
 
 
 def random_phone_number():
-    """随机手机号"""
+    """隨機手機號"""
     return fake.phone_number()
 
 
 def random_name():
-    """随机姓名"""
+    """隨機姓名"""
     return fake.name()
 
 
 def random_address():
-    """随机地址"""
+    """隨機地址"""
     return fake.address()
 
 
 def random_email():
-    """随机email"""
+    """隨機email"""
     return fake.email()
 
 
 def random_ipv4():
-    """随机IPV4地址"""
+    """隨機IPV4地址"""
     return fake.ipv4()
 
 
 def random_str(min_chars=0, max_chars=8):
-    """长度在最大值与最小值之间的随机字符串"""
+    """長度在最大值與最小值之間的隨機字符串"""
     return fake.pystr(min_chars=min_chars, max_chars=max_chars)
 
-# 产生一个id随机生成器
+# 產生一個id隨機生成器
 def factory_generate_ids(starting_id=1, increment=1):
-    """ 返回一个生成器函数，调用这个函数产生生成器，从starting_id开始，步长为increment。 """
+    """ 返回一個生成器函數，調用這個函數產生生成器，從starting_id開始，步長為increment。 """
     def generate_started_ids():
         val = starting_id
         local_increment = increment
@@ -46,9 +46,9 @@ def factory_generate_ids(starting_id=1, increment=1):
             val += local_increment
     return generate_started_ids
 
-# 产生一个随机选项生成器
+# 產生一個隨機選項生成器
 def factory_choice_generator(values):
-    """ 返回一个生成器函数，调用这个函数产生生成器，从给定的list中随机取一项。 """
+    """ 返回一個生成器函數，調用這個函數產生生成器，從給定的list中隨機取一項。 """
     def choice_generator():
         my_list = list(values)
         rand = random.Random()

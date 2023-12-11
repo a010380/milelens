@@ -1,6 +1,6 @@
 """
 socket server 的mock。
-两个接口，add和sub
+兩個接口，add和sub
 接收：
 {
     "action": "add",

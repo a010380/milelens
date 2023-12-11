@@ -1,1 +1,1 @@
-# utils层，所有的支撑代码都在这里，包括读取config的类、写log的类、读取excel、xml的类、生成报告的类（如HTMLTestRunner）、数据库连接、发送邮件等类和方法，都在这里
+# utils層，所有的支撐代碼都在這里，包括讀取config的類、寫log的類、讀取excel、xml的類、生成報告的類（如HTMLTestRunner）、數據庫連接、發送郵件等類和方法，都在這里
