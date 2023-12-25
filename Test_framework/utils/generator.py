@@ -3,7 +3,7 @@
 import random
 from faker import Factory
 
-fake = Factory().create('zh_CN')
+fake = Factory().create('zh_tw')
 
 
 def random_phone_number():

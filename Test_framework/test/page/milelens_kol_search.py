@@ -6,7 +6,10 @@ from utils.file_reader import ExcelReader  # 引入xls读取模块
 from ..common.page import Page
 from time import sleep
 from utils.assertion import *
+from utils.generator import *
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 # milelens網紅搜尋、AI智慧搜尋、網紅熱門排行、網紅收藏庫
 
@@ -348,25 +351,25 @@ class MilelensKolSearch(MilelensLoginPage):
 
     def test(self):
         # 過度時期
-        self.wait()
         self.find_element(*self.close_popup).click()
         self.find_element(*self.close_popup).click()
-        self.wait()
         self.find_element(*self.go_to_kol_search).click()
-        self.refresh()
-        self.find_element(*self.kol_name_input).click()
-        self.find_element(*self.kol_name_input).send_keys("joeman")
-        self.wait()
-        self.find_element(*self.search_button).click()
-        self.wait()
+        self.implicitly_wait()
+        self.find_element(*self.post_keyword).click()
+        self.find_element(*self.post_keyword_input).click()
+        self.explicitly_wait(self.post_keyword_input).send_keys("Selenium automation")
+        
+        # search_box = WebDriverWait(self.driver, 10).until(
+        #     EC.presence_of_element_located(self.post_keyword_input)
+        # )
+        # search_box.send_keys("Selenium automation")
 
-        # 開始驗證聲量分析
-        self.find_element(*self.click_first_kol).click()
-        self.wait()
-        self.switch_to_window()
-        self.close()
-        self.wait()
-        self.switch_to_window()
-        self.find_element(*self.ai_smart_search).click()
-        self.wait()
-        print('ok')
+        # print('**************************************************')
+        # print('random_phone_number: ' + random_phone_number())
+        # print('random_name: ' + random_name())
+        # print('random_address: ' + random_address())
+        # print('random_email: ' + random_email())
+        # print('random_str: ' + random_str())
+        # print('factory_generate_ids: ' + str(factory_generate_ids()))
+        # print('factory_choice_generator: ' + str(factory_choice_generator(3)))
+        # print('**************************************************')

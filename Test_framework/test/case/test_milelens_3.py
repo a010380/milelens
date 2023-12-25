@@ -37,7 +37,7 @@ class TestMilelens_3(unittest.TestCase):
         # self.page.aiSearch()
         # print('網紅熱門排行 先選擇平台 在選擇粉絲數 最後切換tab')
         # self.page.kolHotRank()
-        self.page.postKeywords()
+        self.page.test()
 
         
 # 設定日誌配置
@@ -64,6 +64,11 @@ if __name__ == '__main__':
         # unittest.main(testRunner=runner)
         runner = HTMLTestRunner(stream=f, title='Test Report', description='Your description')
         result = runner.run(suite)
+
+    # 另外一種方式
+    # with open(report_path, 'wb') as f:
+    #     runner = HTMLTestRunner(f, verbosity=2, title='克森全站', description='修改html報告')
+    #     runner.run(TestMilelens_3('test_search'))
 
     # 在測試之後執行自定義的代碼
     logging.info('這是一條信息')

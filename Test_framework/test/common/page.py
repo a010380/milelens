@@ -3,8 +3,11 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from .browser import Browser
 from utils.log import logger
-import os
+import os, logging
 from utils.config import DRIVER_PATH, REPORT_PATH
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 # 瀏覽器頁面類，主要進行瀏覽器頁面的控制，包括獲取
 class Page(Browser):
@@ -41,9 +44,21 @@ class Page(Browser):
     def free_wait(self, seconds):
         time.sleep(seconds)
 
-    # 睡眠一段時間
+    # 隱性等待
     def implicitly_wait(self, seconds=5):
         self.driver.implicitly_wait(seconds)
+
+    # 顯性等待
+    def explicitly_wait(self, element):
+        try:
+            element = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located(element)
+            )
+            logging.info('等待到定位!!!!!!!!!!!!')
+            return element
+        except:
+            logging.error('等待不到定位')
+            logging.info('element: ' + element)
 
     # 執行js腳本
     def execute(self, js, *args):
